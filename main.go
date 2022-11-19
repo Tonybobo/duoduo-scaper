@@ -23,7 +23,7 @@ func main() {
 	// list, _ := getM3u8Url(strings.Trim(text, "\r\n"))
 	// fmt.Print(list)
 
-	hlsDL := hlsdl.New("https://home-clone-clear.mushroomtrack.com/hls/sh3zVA1jg4x2jXPWgTIZUA/1668685386/28000/28109/28109.m3u8", nil, "download", 10, true)
+	hlsDL := hlsdl.New("https://vip.lz-cdn9.com/20221012/14910_45765ff8/1200k/hls/mixed.m3u8", nil, "download", 10, true, "testing")
 	result, err := retry(hlsDL)
 	if err != nil {
 		panic(err)
@@ -36,7 +36,7 @@ func retry(hlsDL *hlsdl.HlsDL) (string, error) {
 		filepath, err := hlsDL.Download()
 		if i > 0 {
 			os.RemoveAll("download")
-			fmt.Printf("retrying after error %s", err)
+			fmt.Printf("retrying after error %s\n", err)
 			time.Sleep(time.Second * 5)
 		}
 		if err == nil {
